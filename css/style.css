@@ -174,7 +174,7 @@ a { color: inherit; }
   .menu a:not(.btn) { font-size: 1.400rem; font-family: var(--display); }
   .nav.menu-open { color: var(--sand); background: none; box-shadow: none; backdrop-filter: none; }
   .nav.menu-open .brand { position: relative; z-index: 2; }
-  .hero { align-items: start; min-height: max(100svh, 820px); }
+  .hero { align-items: start; min-height: max(100svh, 920px); }
   .hero-copy { padding: 104px 0 0; }
 }
 @media (max-width: 520px) {
