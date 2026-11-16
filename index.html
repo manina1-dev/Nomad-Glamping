@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nomad Glamping — Διαμονή στη φύση, με άνεση</title>
+  <meta name="description" content="Nomad Glamping: πολυτελείς σκηνές μέσα στη φύση. Ύπνος κάτω από τα αστέρια, με όλες τις ανέσεις.">
+  <meta property="og:title" content="Nomad Glamping">
+  <meta property="og:description" content="Διαμονή στη φύση, με άνεση.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1f2b24">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-en="Skip to content">Μετάβαση στο περιεχόμενο</a>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Nomad Glamping">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 3 27h8l5-10 5 10h8z" fill="currentColor"/></svg>
+      <span>Nomad <em>Glamping</em></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu" aria-label="Μενού">
+      <span></span><span></span>
+    </button>
+    <nav class="menu" id="menu">
+      <a href="#about" data-en="The idea">Η ιδέα</a>
+      <a href="#stays" data-en="Stays">Διαμονή</a>
+      <a href="#experiences" data-en="Experiences">Εμπειρίες</a>
+      <a href="#faq" data-en="Good to know">Χρήσιμα</a>
+      <a href="#contact" class="btn btn-small" data-en="Book">Κράτηση</a>
+      <button class="lang" id="lang" aria-label="Switch to English">EN</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <svg class="hero-art" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#131c26"/>
+            <stop offset=".45" stop-color="#2b3a4a"/>
+            <stop offset=".75" stop-color="#a8664a"/>
+            <stop offset="1" stop-color="#e9a86a"/>
+          </linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#ffd58a" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#ffd58a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1440" height="800" fill="url(#sky)"/>
+        <g fill="#fff" class="stars">
+          <circle cx="120" cy="90" r="1.6"/><circle cx="260" cy="170" r="1.1"/><circle cx="380" cy="60" r="1.4"/>
+          <circle cx="520" cy="140" r="1"/><circle cx="640" cy="50" r="1.7"/><circle cx="760" cy="200" r="1"/>
+          <circle cx="880" cy="110" r="1.3"/><circle cx="990" cy="40" r="1"/><circle cx="1180" cy="210" r="1.2"/>
+          <circle cx="1290" cy="70" r="1.6"/><circle cx="1380" cy="160" r="1"/><circle cx="60" cy="230" r="1"/>
+          <circle cx="450" cy="250" r="1.2"/><circle cx="700" cy="290" r="1"/><circle cx="930" cy="270" r="1.3"/>
+          <circle cx="1340" cy="300" r="1"/><circle cx="200" cy="320" r="1.1"/>
+        </g>
+        <circle cx="1120" cy="130" r="38" fill="#f6e7c6"/>
+        <circle cx="1136" cy="120" r="34" fill="#243242"/>
+        <path d="M0 560 180 430l120 80 170-150 190 170 150-110 200 150 170-130 260 170V800H0z" fill="#3b4750"/>
+        <path d="M0 640 220 520l160 90 210-140 230 160 190-110 430 190V800H0z" fill="#2a3a33"/>
+        <path d="M0 720c200-50 420-60 720-40s520 10 720-30v150H0z" fill="#16211b"/>
+        <g fill="#16211b">
+          <path d="M150 720l28-120 28 120zM120 730l58-70 58 70z"/>
+          <path d="M250 725l22-95 22 95zM228 735l44-55 44 55z"/>
+          <path d="M1210 712l30-130 30 130zM1178 724l62-76 62 76z"/>
+          <path d="M1320 716l22-96 22 96zM1298 726l44-56 44 56z"/>
+        </g>
+        <circle cx="720" cy="690" r="150" fill="url(#glow)"/>
+        <path d="M720 560 590 720h260z" fill="#f1e4cc"/>
+        <path d="M720 560 590 720h70z" fill="#d9c7a6"/>
+        <path d="M720 610l-40 110h80z" fill="#ffcf7a"/>
+        <path d="M720 610v110" stroke="#b9853e" stroke-width="3"/>
+        <path d="M720 548v14" stroke="#f1e4cc" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div class="hero-copy">
+        <p class="eyebrow" data-en="Glamping · Nature · Slow living">Glamping · Φύση · Ηρεμία</p>
+        <h1 data-en="Sleep under the stars. Wake up rested.">Ύπνος κάτω από τα αστέρια. Ξύπνημα ξεκούραστο.</h1>
+        <p class="lede" data-en="Spacious canvas tents with real beds, set in the heart of nature. All the freedom of camping, none of the hassle.">Ευρύχωρες σκηνές με αληθινά κρεβάτια, στην καρδιά της φύσης. Όλη η ελευθερία του κάμπινγκ, χωρίς την ταλαιπωρία.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact" data-en="Check availability">Δείτε διαθεσιμότητα</a>
+          <a class="btn btn-ghost" href="#stays" data-en="Explore the tents">Γνωρίστε τις σκηνές</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="wrap two-col">
+        <div>
+          <p class="eyebrow" data-en="The idea">Η ιδέα</p>
+          <h2 data-en="A place to slow down">Ένα μέρος για να κατεβάσετε ταχύτητα</h2>
+        </div>
+        <div class="prose">
+          <p data-en="Nomad Glamping was born from a simple wish: to live in nature without giving up a good night's sleep. Here the day begins with birdsong and ends by the fire, under a sky full of stars.">Το Nomad Glamping γεννήθηκε από μια απλή επιθυμία: να ζούμε τη φύση χωρίς να στερούμαστε έναν καλό ύπνο. Εδώ η μέρα ξεκινά με κελαηδίσματα και τελειώνει δίπλα στη φωτιά, κάτω από έναν ουρανό γεμάτο αστέρια.</p>
+          <p data-en="Few tents, plenty of space between them and care in every detail — so the only thing you need to bring is your mood.">Λίγες σκηνές, άπλα ανάμεσά τους και φροντίδα σε κάθε λεπτομέρεια — ώστε το μόνο που χρειάζεται να φέρετε είναι η διάθεσή σας.</p>
+        </div>
+      </div>
+      <ul class="wrap perks">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6M3 15h18M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+          <h3 data-en="Real beds">Αληθινά κρεβάτια</h3>
+          <p data-en="Quality mattresses and cotton linen, made up before you arrive.">Ποιοτικά στρώματα και βαμβακερά σεντόνια, στρωμένα πριν φτάσετε.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 3 4 4.500 4 8a4 4 0 0 1-8 0c0-1.500.6-2.500 1.500-3.500C10 9 12 7 12 3zM5 21h14"/></svg>
+          <h3 data-en="Evenings by the fire">Βραδιές στη φωτιά</h3>
+          <p data-en="A shared fire pit for stories, music and marshmallows.">Κοινόχρηστη εστία για ιστορίες, μουσική και marshmallows.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V11M12 11c0-4 3-7 7-7 0 4-3 7-7 7zM12 14c0-3-2-5-6-5 0 3 2 5 6 5z"/></svg>
+          <h3 data-en="Gentle on nature">Με σεβασμό στη φύση</h3>
+          <p data-en="Light structures, natural materials and a small footprint.">Ελαφριές κατασκευές, φυσικά υλικά και μικρό αποτύπωμα.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.600 5.600 6 .7-4.500 4.100 1.300 6L12 16.300 6.600 19.400l1.300-6L3.400 9.300l6-.7z"/></svg>
+          <h3 data-en="A sky full of stars">Ουρανός γεμάτος αστέρια</h3>
+          <p data-en="Far from city lights, the night sky is the main event.">Μακριά από τα φώτα της πόλης, ο νυχτερινός ουρανός είναι το θέαμα.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section stays" id="stays">
+      <div class="wrap">
+        <p class="eyebrow" data-en="Stays">Διαμονή</p>
+        <h2 data-en="Choose your tent">Διαλέξτε τη σκηνή σας</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-art art-a">
+              <svg viewBox="0 0 200 120" aria-hidden="true"><path d="M100 22 38 100h124z" fill="#f1e4cc"/><path d="M100 22 38 100h34z" fill="#d9c7a6"/><path d="M100 52 82 100h36z" fill="#3a2c1f"/><path d="M20 100h160" stroke="#f1e4cc" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <h3>Bell Tent</h3>
+              <p class="meta" data-en="Up to 2 guests · Double bed">Έως 2 άτομα · Διπλό κρεβάτι</p>
+              <p data-en="The classic round tent: cosy, bright and ideal for couples.">Η κλασική στρογγυλή σκηνή: ζεστή, φωτεινή και ιδανική για ζευγάρια.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-art art-b">
+              <svg viewBox="0 0 200 120" aria-hidden="true"><path d="M30 58 100 28l70 30v42H30z" fill="#f1e4cc"/><path d="M30 58 100 28l70 30z" fill="#d9c7a6"/><path d="M84 66h32v34H84z" fill="#3a2c1f"/><path d="M14 100h172" stroke="#f1e4cc" stroke-width="3" stroke-linecap="round"/><path d="M22 100V70M178 100V70" stroke="#d9c7a6" stroke-width="3"/></svg>
+            </div>
+            <div class="card-body">
+              <h3>Safari Tent</h3>
+              <p class="meta" data-en="Up to 4 guests · Private deck">Έως 4 άτομα · Ιδιωτική βεράντα</p>
+              <p data-en="More room, a separate sleeping area and a wooden deck — made for families.">Περισσότερος χώρος, ξεχωριστός χώρος ύπνου και ξύλινη βεράντα — φτιαγμένη για οικογένειες.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-art art-c">
+              <svg viewBox="0 0 200 120" aria-hidden="true"><path d="M40 100a60 60 0 0 1 120 0z" fill="#f1e4cc"/><path d="M100 40v60M70 48l-8 52M130 48l8 52M46 74h108" stroke="#d9c7a6" stroke-width="2.500" fill="none"/><path d="M86 100a14 20 0 0 1 28 0z" fill="#3a2c1f"/><path d="M20 100h160" stroke="#f1e4cc" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <h3>Star Dome</h3>
+              <p class="meta" data-en="Up to 2 guests · Panoramic window">Έως 2 άτομα · Πανοραμικό παράθυρο</p>
+              <p data-en="A dome with a clear panel above the bed, to fall asleep watching the stars.">Θόλος με διάφανο άνοιγμα πάνω από το κρεβάτι, για να αποκοιμηθείτε κοιτώντας τα αστέρια.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experiences" id="experiences">
+      <div class="wrap">
+        <p class="eyebrow" data-en="Experiences">Εμπειρίες</p>
+        <h2 data-en="Days as full — or as empty — as you like">Μέρες όσο γεμάτες — ή όσο άδειες — θέλετε</h2>
+        <ol class="steps">
+          <li>
+            <span data-en="Morning">Πρωί</span>
+            <h3 data-en="Breakfast outdoors">Πρωινό στο ύπαιθρο</h3>
+            <p data-en="Local produce, fresh bread and coffee with a view.">Τοπικά προϊόντα, φρέσκο ψωμί και καφές με θέα.</p>
+          </li>
+          <li>
+            <span data-en="Midday">Μεσημέρι</span>
+            <h3 data-en="Trails and discovery">Μονοπάτια και εξερεύνηση</h3>
+            <p data-en="Walks, cycling and outings in the surrounding area.">Πεζοπορία, ποδήλατο και εξορμήσεις στη γύρω περιοχή.</p>
+          </li>
+          <li>
+            <span data-en="Afternoon">Απόγευμα</span>
+            <h3 data-en="Hammock time">Ώρα για αιώρα</h3>
+            <p data-en="A book, the shade of a tree and nothing on the schedule.">Ένα βιβλίο, η σκιά ενός δέντρου και τίποτα στο πρόγραμμα.</p>
+          </li>
+          <li>
+            <span data-en="Night">Βράδυ</span>
+            <h3 data-en="Fire and stargazing">Φωτιά και αστροπαρατήρηση</h3>
+            <p data-en="The day winds down around the fire, under the Milky Way.">Η μέρα κλείνει γύρω από τη φωτιά, κάτω από τον Γαλαξία.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="wrap two-col">
+        <div>
+          <p class="eyebrow" data-en="Good to know">Χρήσιμα</p>
+          <h2 data-en="Before you come">Πριν έρθετε</h2>
+        </div>
+        <div class="qa">
+          <details open>
+            <summary data-en="What should I bring?">Τι να φέρω μαζί μου;</summary>
+            <p data-en="Comfortable clothes, something warm for the evening and a torch. Bedding and towels are provided.">Άνετα ρούχα, κάτι ζεστό για το βράδυ και έναν φακό. Κλινοσκεπάσματα και πετσέτες παρέχονται.</p>
+          </details>
+          <details>
+            <summary data-en="When are you open?">Πότε είστε ανοιχτά;</summary>
+            <p data-en="We are open seasonally. Get in touch for this year's dates.">Λειτουργούμε εποχικά. Επικοινωνήστε μαζί μας για τις φετινές ημερομηνίες.</p>
+          </details>
+          <details>
+            <summary data-en="Is it suitable for children?">Είναι κατάλληλο για παιδιά;</summary>
+            <p data-en="Of course — children love the tents. Tell us their ages and we will suggest the right one.">Φυσικά — τα παιδιά λατρεύουν τις σκηνές. Πείτε μας τις ηλικίες και θα σας προτείνουμε την κατάλληλη.</p>
+          </details>
+          <details>
+            <summary data-en="How do I book?">Πώς κάνω κράτηση;</summary>
+            <p data-en="Send us your dates and the number of guests, and we will reply with availability and prices.">Στείλτε μας ημερομηνίες και αριθμό ατόμων, και θα σας απαντήσουμε με διαθεσιμότητα και τιμές.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap contact-box">
+        <div>
+          <p class="eyebrow" data-en="Booking">Κράτηση</p>
+          <h2 data-en="Your tent is waiting">Η σκηνή σας περιμένει</h2>
+          <p data-en="Tell us when you would like to come and we will take care of the rest.">Πείτε μας πότε θέλετε να έρθετε και αναλαμβάνουμε τα υπόλοιπα.</p>
+          <a class="btn" id="mailBtn" href="#contact" data-en="Send a request">Στείλτε αίτημα</a>
+        </div>
+        <dl class="details">
+          <div><dt data-en="Email">Email</dt><dd id="cEmail"></dd></div>
+          <div><dt data-en="Phone">Τηλέφωνο</dt><dd id="cPhone"></dd></div>
+          <div><dt data-en="Location">Τοποθεσία</dt><dd id="cPlace"></dd></div>
+          <div><dt>Social</dt><dd id="cSocial"></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© <span id="year"></span> Nomad Glamping</span>
+      <a href="#top" data-en="Back to top ↑">Πίσω στην αρχή ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
