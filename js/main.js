@@ -17,6 +17,12 @@ function setLang(next) {
   document.title = lang === "el"
     ? "Nomad Glamping | Glamping με ιδιωτική πισίνα | Σχοινιάς"
     : "Nomad Glamping | property with private pool | Schinias, Greece";
+  const waText = lang === "el"
+    ? "Γεια σας! Ενδιαφέρομαι για διαμονή στο Nomad Glamping.\nΗμερομηνίες: \nΆτομα: "
+    : "Hello! I am interested in staying at Nomad Glamping.\nDates: \nGuests: ";
+  document.querySelectorAll("a[data-wa]").forEach((a) => {
+    a.href = "https://wa.me/306974046224?text=" + encodeURIComponent(waText);
+  });
   try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
 }
 langBtn.addEventListener("click", () => setLang(lang === "el" ? "en" : "el"));

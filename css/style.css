@@ -53,6 +53,8 @@ a { color: inherit; }
 .btn:hover { background: var(--clay-dark); border-color: var(--clay-dark); transform: translateY(-1px); }
 .btn-ghost { background: transparent; border-color: rgba(255, 255, 255, .7); }
 .btn-ghost:hover { background: rgba(255, 255, 255, .14); border-color: #fff; }
+.btn-wa { background: #1f8f4e; border-color: #1f8f4e; }
+.btn-wa:hover { background: #18753f; border-color: #18753f; }
 .btn-small { padding: 9px 18px; font-size: .920rem; }
 
 /* Nav */
