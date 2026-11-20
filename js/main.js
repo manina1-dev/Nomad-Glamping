@@ -23,6 +23,11 @@ function setLang(next) {
   document.querySelectorAll("a[data-wa]").forEach((a) => {
     a.href = "https://wa.me/306974046224?text=" + encodeURIComponent(waText);
   });
+  const map = document.querySelector(".map-frame iframe");
+  if (map) {
+    const src = map.getAttribute("src").replace(/hl=(el|en)/, "hl=" + lang);
+    if (src !== map.getAttribute("src")) map.setAttribute("src", src);
+  }
   try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
 }
 langBtn.addEventListener("click", () => setLang(lang === "el" ? "en" : "el"));

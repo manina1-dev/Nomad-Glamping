@@ -155,6 +155,15 @@ a { color: inherit; }
 .details a { text-underline-offset: 4px; }
 .map-link { display: inline-block; margin-top: 6px; font-size: .920rem; color: var(--gold); }
 
+/* Map */
+.map-block { margin-top: 28px; }
+.map-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 14px; }
+.map-head h3 { color: var(--deep); }
+.map-head p { margin: 0; color: var(--ink-soft); }
+.map-frame { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: var(--sand-deep); aspect-ratio: 16 / 7; }
+.map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+@media (max-width: 760px) { .map-frame { aspect-ratio: 4 / 3; border-radius: 16px; } }
+
 /* Footer */
 .footer { padding: 28px 0 40px; font-size: .900rem; color: var(--ink-soft); }
 .footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
