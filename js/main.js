@@ -8,7 +8,7 @@ altNodes.forEach((n) => { n.dataset.altEl = n.alt; });
 const langButtons = [...document.querySelectorAll(".lang")];
 const moreBtn = document.getElementById("moreBtn");
 const grid = document.getElementById("grid");
-const shots = [...grid.querySelectorAll("a")];
+const shots = grid ? [...grid.querySelectorAll("a")] : [];
 
 function moreLabel() {
   if (grid.classList.contains("open")) return lang === "el" ? "Λιγότερες φωτογραφίες" : "Show fewer photos";
@@ -24,9 +24,10 @@ function setLang(next) {
     b.textContent = lang === "el" ? "EN" : "ΕΛ";
     b.setAttribute("aria-label", lang === "el" ? "Switch to English" : "Αλλαγή σε Ελληνικά");
   });
+  const root = document.documentElement.dataset;
   document.title = lang === "el"
-    ? "Nomad Glamping | Glamping με ιδιωτική πισίνα | Σχοινιάς"
-    : "Nomad Glamping | property with private pool | Schinias, Greece";
+    ? (root.titleEl || "Nomad Glamping | Glamping με ιδιωτική πισίνα | Σχοινιάς")
+    : (root.titleEn || "Nomad Glamping | property with private pool | Schinias, Greece");
   const waText = lang === "el"
     ? "Γεια σας! Ενδιαφέρομαι για διαμονή στο Nomad Glamping.\nΗμερομηνίες: \nΆτομα: "
     : "Hello! I am interested in staying at Nomad Glamping.\nDates: \nGuests: ";
@@ -38,7 +39,7 @@ function setLang(next) {
     const src = map.getAttribute("src").replace(/hl=(el|en)/, "hl=" + lang);
     if (src !== map.getAttribute("src")) map.setAttribute("src", src);
   }
-  moreBtn.textContent = moreLabel();
+  if (moreBtn) moreBtn.textContent = moreLabel();
   try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
 }
 langButtons.forEach((b) => b.addEventListener("click", () => setLang(lang === "el" ? "en" : "el")));
@@ -72,7 +73,7 @@ menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false
 document.querySelector(".nav .book").addEventListener("click", () => setMenu(false));
 
 /* ---------- Gallery: show 12, expand to all ---------- */
-moreBtn.addEventListener("click", () => {
+if (moreBtn) moreBtn.addEventListener("click", () => {
   const opening = !grid.classList.contains("open");
   grid.classList.toggle("open", opening);
   moreBtn.textContent = moreLabel();
@@ -97,14 +98,14 @@ shots.forEach((a, i) => a.addEventListener("click", (e) => {
   show(i);
   box.showModal();
 }));
-document.getElementById("lbPrev").addEventListener("click", () => show(current - 1));
-document.getElementById("lbNext").addEventListener("click", () => show(current + 1));
-document.getElementById("lbClose").addEventListener("click", () => box.close());
-box.addEventListener("click", (e) => { if (e.target === box) box.close(); });
+document.getElementById("lbPrev")?.addEventListener("click", () => show(current - 1));
+document.getElementById("lbNext")?.addEventListener("click", () => show(current + 1));
+document.getElementById("lbClose")?.addEventListener("click", () => box.close());
+box?.addEventListener("click", (e) => { if (e.target === box) box.close(); });
 
 let touchX = null;
-box.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
-box.addEventListener("touchend", (e) => {
+box?.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+box?.addEventListener("touchend", (e) => {
   if (touchX === null) return;
   const dx = e.changedTouches[0].clientX - touchX;
   if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
@@ -112,7 +113,7 @@ box.addEventListener("touchend", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
-  if (box.open) {
+  if (box && box.open) {
     if (e.key === "ArrowLeft") show(current - 1);
     if (e.key === "ArrowRight") show(current + 1);
   } else if (e.key === "Escape" && !menu.hidden) {
@@ -121,7 +122,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ---------- Reveal on scroll ---------- */
-const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .contact-grid, .location");
+const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .contact-grid, .location, .area-head, .place, .area-cta");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
