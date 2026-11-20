@@ -134,7 +134,8 @@ button { font: inherit; }
 
 /* Amenities, styled like room cards */
 .amenities { padding: clamp(80px, 11vw, 140px) 0; background: var(--tint); }
-.rooms { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 3vw, 36px); margin-top: 56px; }
+.rooms { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.200vw, 28px); margin-top: 56px; }
+@media (max-width: 1100px) { .rooms { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-inline: auto; } }
 .room-img { position: relative; overflow: hidden; color: #fff; }
 .room-img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .9s ease; }
 .room:hover .room-img img { transform: scale(1.04); }
@@ -144,7 +145,7 @@ button { font: inherit; }
   font-family: var(--display); font-weight: 300; font-size: clamp(2.600rem, 4.500vw, 3.600rem); line-height: 1;
 }
 .room-no::before, .room-no::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, .7); }
-.room-img h3 { position: absolute; z-index: 1; left: 0; right: 0; bottom: 26px; text-align: center; color: #fff; font-size: 1.700rem; }
+.room-img h3 { position: absolute; z-index: 1; left: 0; right: 0; bottom: 24px; padding: 0 12px; text-align: center; color: #fff; font-size: clamp(1.400rem, 2vw, 1.700rem); }
 .room ul { list-style: none; margin: 22px 0 0; padding: 0; text-align: center; font-size: .920rem; }
 .room li { padding: 7px 0; }
 .room li + li { border-top: 1px solid var(--line); }
