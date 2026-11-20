@@ -153,6 +153,7 @@ a { color: inherit; }
 .details dt { font-size: .780rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); padding-top: 3px; }
 .details dd { margin: 0; overflow-wrap: anywhere; font-size: 1.100rem; }
 .details a { text-underline-offset: 4px; }
+.map-link { display: inline-block; margin-top: 6px; font-size: .920rem; color: var(--gold); }
 
 /* Footer */
 .footer { padding: 28px 0 40px; font-size: .900rem; color: var(--ink-soft); }
