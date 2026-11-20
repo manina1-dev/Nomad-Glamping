@@ -214,6 +214,8 @@ button { font: inherit; }
 .info-grid svg { width: 34px; height: 34px; margin-bottom: 10px; fill: none; stroke: var(--accent); stroke-width: 1.200; stroke-linecap: round; stroke-linejoin: round; }
 .info-label { font-size: .700rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; }
 .info-grid strong { font-family: var(--display); font-weight: 300; font-size: 1.650rem; color: var(--ink); line-height: 1.25; }
+.info-grid .info-wide { grid-column: 1 / -1; }
+.info-wide p { max-width: 52ch; margin: 6px 0 0; font-size: .950rem; }
 @media (max-width: 700px) { .info-grid { grid-template-columns: repeat(2, 1fr); } .info-grid li { padding: 28px 12px 26px; } .info-grid strong { font-size: 1.300rem; } }
 
 /* Gift card */
