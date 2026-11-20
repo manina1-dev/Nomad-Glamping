@@ -31,8 +31,12 @@ function setLang(next) {
   const waText = lang === "el"
     ? "Γεια σας! Ενδιαφέρομαι για διαμονή στο Nomad Glamping.\nΗμερομηνίες: \nΆτομα: "
     : "Hello! I am interested in staying at Nomad Glamping.\nDates: \nGuests: ";
+  const giftText = lang === "el"
+    ? "Γεια σας! Θα ήθελα μια δωροκάρτα για διαμονή στο Nomad Glamping.\nΔιανυκτερεύσεις: \nΆτομα: "
+    : "Hello! I would like a gift card for a stay at Nomad Glamping.\nNights: \nGuests: ";
   document.querySelectorAll("a[data-wa]").forEach((a) => {
-    a.href = "https://wa.me/306974046224?text=" + encodeURIComponent(waText);
+    const text = a.dataset.wa === "gift" ? giftText : waText;
+    a.href = "https://wa.me/306974046224?text=" + encodeURIComponent(text);
   });
   const map = document.querySelector(".map-frame iframe");
   if (map) {
@@ -122,7 +126,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ---------- Reveal on scroll ---------- */
-const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .contact-grid, .location, .area-head, .place, .area-cta");
+const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });

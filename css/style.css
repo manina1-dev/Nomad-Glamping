@@ -207,6 +207,14 @@ button { font: inherit; }
 .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
 .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
 
+/* Gift card */
+.gift { padding: clamp(80px, 10vw, 130px) 0; background: var(--tint); }
+.gift-grid { display: grid; grid-template-columns: 1.150fr 1fr; gap: clamp(32px, 7vw, 100px); align-items: center; }
+.gift-grid img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.gift-copy h2 { margin-bottom: 20px; }
+.gift-copy p:not(.kicker) { max-width: 42ch; margin-bottom: 32px; }
+@media (max-width: 960px) { .gift-grid { grid-template-columns: 1fr; } }
+
 /* Contact */
 .contact { padding: clamp(80px, 11vw, 140px) 0 clamp(60px, 8vw, 100px); border-top: 1px solid var(--line); }
 .contact-grid { display: grid; grid-template-columns: 1.300fr 1fr; gap: clamp(32px, 7vw, 100px); align-items: center; margin-top: 56px; }
