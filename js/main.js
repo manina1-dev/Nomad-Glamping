@@ -5,15 +5,25 @@ const i18nNodes = [...document.querySelectorAll("[data-en]")];
 i18nNodes.forEach((n) => { n.dataset.el = n.textContent; });
 const altNodes = [...document.querySelectorAll("img[data-alt-en]")];
 altNodes.forEach((n) => { n.dataset.altEl = n.alt; });
-const langBtn = document.getElementById("lang");
+const langButtons = [...document.querySelectorAll(".lang")];
+const moreBtn = document.getElementById("moreBtn");
+const grid = document.getElementById("grid");
+const shots = [...grid.querySelectorAll("a")];
+
+function moreLabel() {
+  if (grid.classList.contains("open")) return lang === "el" ? "Λιγότερες φωτογραφίες" : "Show fewer photos";
+  return (lang === "el" ? "Όλες οι φωτογραφίες" : "Show all photos") + ` (${shots.length})`;
+}
 
 function setLang(next) {
   lang = next;
   document.documentElement.lang = lang;
   i18nNodes.forEach((n) => { n.textContent = n.dataset[lang]; });
   altNodes.forEach((n) => { n.alt = lang === "el" ? n.dataset.altEl : n.dataset.altEn; });
-  langBtn.textContent = lang === "el" ? "EN" : "ΕΛ";
-  langBtn.setAttribute("aria-label", lang === "el" ? "Switch to English" : "Αλλαγή σε Ελληνικά");
+  langButtons.forEach((b) => {
+    b.textContent = lang === "el" ? "EN" : "ΕΛ";
+    b.setAttribute("aria-label", lang === "el" ? "Switch to English" : "Αλλαγή σε Ελληνικά");
+  });
   document.title = lang === "el"
     ? "Nomad Glamping | Glamping με ιδιωτική πισίνα | Σχοινιάς"
     : "Nomad Glamping | property with private pool | Schinias, Greece";
@@ -28,16 +38,17 @@ function setLang(next) {
     const src = map.getAttribute("src").replace(/hl=(el|en)/, "hl=" + lang);
     if (src !== map.getAttribute("src")) map.setAttribute("src", src);
   }
+  moreBtn.textContent = moreLabel();
   try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
 }
-langBtn.addEventListener("click", () => setLang(lang === "el" ? "en" : "el"));
+langButtons.forEach((b) => b.addEventListener("click", () => setLang(lang === "el" ? "en" : "el")));
 
 let saved = null;
 try { saved = localStorage.getItem("lang"); } catch (e) { /* ignore */ }
 const browserEl = (navigator.language || "el").toLowerCase().startsWith("el");
 setLang(saved || (browserEl ? "el" : "en"));
 
-/* ---------- Nav ---------- */
+/* ---------- Header & full-screen menu ---------- */
 const nav = document.getElementById("nav");
 const menu = document.getElementById("menu");
 const toggle = document.getElementById("navToggle");
@@ -46,19 +57,32 @@ window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
 function setMenu(open) {
-  menu.classList.toggle("open", open);
-  nav.classList.toggle("menu-open", open);
   toggle.setAttribute("aria-expanded", String(open));
   document.body.style.overflow = open ? "hidden" : "";
+  if (open) {
+    menu.hidden = false;
+    requestAnimationFrame(() => menu.classList.add("open"));
+  } else {
+    menu.classList.remove("open");
+    setTimeout(() => { if (!menu.classList.contains("open")) menu.hidden = true; }, 350);
+  }
 }
-toggle.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+toggle.addEventListener("click", () => setMenu(menu.hidden));
 menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+document.querySelector(".nav .book").addEventListener("click", () => setMenu(false));
 
-/* ---------- Gallery lightbox ---------- */
+/* ---------- Gallery: show 12, expand to all ---------- */
+moreBtn.addEventListener("click", () => {
+  const opening = !grid.classList.contains("open");
+  grid.classList.toggle("open", opening);
+  moreBtn.textContent = moreLabel();
+  if (!opening) document.getElementById("gallery").scrollIntoView();
+});
+
+/* ---------- Lightbox ---------- */
 const box = document.getElementById("lightbox");
 const boxImg = document.getElementById("lbImg");
 const boxCap = document.getElementById("lbCap");
-const shots = [...document.querySelectorAll("#grid a")];
 let current = 0;
 
 function show(i) {
@@ -91,17 +115,17 @@ document.addEventListener("keydown", (e) => {
   if (box.open) {
     if (e.key === "ArrowLeft") show(current - 1);
     if (e.key === "ArrowRight") show(current + 1);
-  } else if (e.key === "Escape") {
+  } else if (e.key === "Escape" && !menu.hidden) {
     setMenu(false);
   }
 });
 
 /* ---------- Reveal on scroll ---------- */
-const revealEls = document.querySelectorAll(".section h2, .prose, .collage, .card, .note, .contact-box");
+const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .contact-grid, .location");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12 });
   revealEls.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
 }
 

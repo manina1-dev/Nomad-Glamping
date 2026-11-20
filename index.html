@@ -8,12 +8,12 @@
   <meta property="og:title" content="Nomad Glamping | property with private pool | Schinias, Greece">
   <meta property="og:description" content="An exclusive glamping site with a private swimming pool, sleeping up to six guests.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/photos/nomad-06.jpg">
-  <meta name="theme-color" content="#0d5b8a">
+  <meta property="og:image" content="assets/photos/nomad-19.jpg">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/photos/nomad-19.jpg">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
@@ -24,106 +24,139 @@
   <a class="skip" href="#main" data-en="Skip to content">Μετάβαση στο περιεχόμενο</a>
 
   <header class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="Nomad Glamping">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 3 27h8l5-10 5 10h8z" fill="currentColor"/></svg>
-      <span>Nomad <em>Glamping</em></span>
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu" aria-label="Μενού">
-      <span></span><span></span>
-    </button>
-    <nav class="menu" id="menu">
-      <a href="#about" data-en="About">Ο χώρος</a>
+    <div class="nav-left">
+      <button class="burger" id="navToggle" aria-expanded="false" aria-controls="menu" aria-label="Μενού">
+        <span></span><span></span>
+      </button>
+      <span class="nav-place" data-en="Schinias, Greece">Σχοινιάς, Αττική</span>
+    </div>
+    <a class="wordmark" href="#top" aria-label="Nomad Glamping">Nomad Glamping</a>
+    <div class="nav-right">
+      <button class="lang" id="lang" aria-label="Switch to English">EN</button>
+      <a class="book" href="#contact" data-en="Book now">Κράτηση</a>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu-links">
+      <a href="#about" data-en="The place">Ο χώρος</a>
       <a href="#amenities" data-en="Amenities">Παροχές</a>
       <a href="#gallery" data-en="Gallery">Φωτογραφίες</a>
-      <a href="#contact" class="btn btn-small" data-en="Contact &amp; Booking">Επικοινωνία &amp; Κράτηση</a>
-      <button class="lang" id="lang" aria-label="Switch to English">EN</button>
+      <a href="#location" data-en="Location">Τοποθεσία</a>
+      <a href="#contact" data-en="Contact &amp; Booking">Επικοινωνία &amp; Κράτηση</a>
     </nav>
-  </header>
+    <div class="menu-foot">
+      <button class="lang lang-m" aria-label="Switch to English">EN</button>
+      <a href="tel:+306974046224">+30 697 404 6224</a>
+      <span data-en="Anexartisias 98, Schinias 190 07, Greece">Ανεξαρτησίας 98, Σχοινιάς 190&nbsp;07</span>
+    </div>
+  </div>
 
   <main id="main">
     <section class="hero" id="top">
-      <img class="hero-art" src="assets/photos/nomad-19.jpg" width="1800" height="1200" alt="Η πισίνα και η πέργκολα" data-alt-en="Pool and pergola" fetchpriority="high">
+      <img class="hero-img" src="assets/photos/nomad-19.jpg" width="1800" height="1200" alt="Η πισίνα και η πέργκολα" data-alt-en="Pool and pergola" fetchpriority="high">
       <div class="hero-copy">
-        <p class="eyebrow" data-en="Schinias · Greece">Σχοινιάς · Αττική</p>
-        <h1 data-en="Experience the Ultimate Glamping Adventure">Ζήστε την απόλυτη εμπειρία glamping</h1>
-        <p class="lede" data-en="Discover life under canvas — an exclusive glamping site with a private swimming pool.">Ανακαλύψτε τη ζωή κάτω από το πανί — ένας αποκλειστικός χώρος glamping με ιδιωτική πισίνα.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#contact" data-en="Check availability">Δείτε διαθεσιμότητα</a>
-          <a class="btn btn-ghost" href="#gallery" data-en="View the gallery">Δείτε φωτογραφίες</a>
-        </div>
+        <p class="kicker" data-en="Glamping with a private pool">Glamping με ιδιωτική πισίνα</p>
+        <h1 data-en="Life under canvas">Ζωή κάτω από το πανί</h1>
       </div>
+      <a class="scroll-cue" href="#about" aria-label="Συνέχεια">
+        <svg viewBox="0 0 24 40" aria-hidden="true"><path d="M6 9l6-6 6 6M6 31l6 6 6-6"/><circle cx="12" cy="20" r="3.500"/></svg>
+      </a>
     </section>
 
-    <ul class="facts">
-      <li><strong data-en="Private pool">Ιδιωτική πισίνα</strong><span data-en="Yours alone, all day">Μόνο για εσάς, όλη μέρα</span></li>
-      <li><strong data-en="Up to 6 guests">Έως 6 επισκέπτες</strong><span data-en="Family or friends">Οικογένεια ή παρέα</span></li>
-      <li><strong data-en="Exclusive site">Αποκλειστική χρήση</strong><span data-en="The whole place is yours">Όλος ο χώρος δικός σας</span></li>
-    </ul>
+    <section class="intro" id="about">
+      <div class="wrap intro-head">
+        <h2 data-en="Welcome to Nomad Glamping, where adventure meets luxury">Καλώς ήρθατε στο Nomad Glamping, εκεί όπου η περιπέτεια συναντά την πολυτέλεια</h2>
+        <p data-en="An exclusive glamping site in Schinias, with a private swimming pool and room for up to six guests.">Ένας αποκλειστικός χώρος glamping στον Σχοινιά, με ιδιωτική πισίνα και φιλοξενία για έως έξι επισκέπτες.</p>
+      </div>
 
-    <section class="section about" id="about">
-      <div class="wrap two-col">
-        <div>
-          <p class="eyebrow" data-en="About">Ο χώρος</p>
-          <h2 data-en="Experience the Magic of Glamping at Nomad">Ζήστε τη μαγεία του glamping στο Nomad</h2>
-          <div class="prose">
-            <p data-en="Welcome to Nomad Glamping, where adventure meets luxury. Our exclusive glamping site features a private swimming pool and accommodations for up to six guests.">Καλώς ήρθατε στο Nomad Glamping, εκεί όπου η περιπέτεια συναντά την πολυτέλεια. Ο αποκλειστικός μας χώρος glamping διαθέτει ιδιωτική πισίνα και φιλοξενεί έως έξι επισκέπτες.</p>
-            <p data-en="Indulge in the beauty of nature while enjoying all the comforts of home. Come explore the great outdoors with us and create unforgettable memories.">Απολαύστε την ομορφιά της φύσης με όλες τις ανέσεις του σπιτιού. Ελάτε να εξερευνήσετε μαζί μας τη ζωή στην ύπαιθρο και να φτιάξετε αξέχαστες αναμνήσεις.</p>
-          </div>
-        </div>
-        <div class="collage">
-          <img src="assets/thumbs/nomad-03.jpg" width="720" height="480" loading="lazy" alt="Η σκηνή και η πισίνα στο ηλιοβασίλεμα" data-alt-en="Tent and pool at sunset">
-          <img src="assets/thumbs/nomad-07.jpg" width="720" height="480" loading="lazy" alt="Το εσωτερικό της σκηνής" data-alt-en="Inside the tent">
-          <img src="assets/thumbs/nomad-01.jpg" width="480" height="720" loading="lazy" alt="Είσοδος με την πινακίδα Nomad Glamping" data-alt-en="Entrance with the Nomad Glamping sign">
+      <div class="duo">
+        <figure class="duo-main">
+          <img src="assets/photos/nomad-03.jpg" width="1800" height="1200" loading="lazy" alt="Η σκηνή και η πισίνα στο ηλιοβασίλεμα" data-alt-en="Tent and pool at sunset">
+        </figure>
+        <div class="duo-side">
+          <p data-en="Indulge in the beauty of nature while enjoying all the comforts of home. Come explore the great outdoors with us and create unforgettable memories.">Απολαύστε την ομορφιά της φύσης με όλες τις ανέσεις του σπιτιού. Ελάτε να εξερευνήσετε μαζί μας τη ζωή στην ύπαιθρο και να φτιάξετε αξέχαστες αναμνήσεις.</p>
+          <img src="assets/thumbs/nomad-44.jpg" width="480" height="720" loading="lazy" alt="Ποτήρι και κεράσια δίπλα στην πισίνα" data-alt-en="A glass and cherries by the pool">
         </div>
       </div>
+
+      <ul class="wrap specs">
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22c2.500 0 2.500 2 5 2s2.500-2 5-2 2.500 2 5 2 2.500-2 5-2 2.500 2 5 2M3 27c2.500 0 2.500 2 5 2s2.500-2 5-2 2.500 2 5 2 2.500-2 5-2 2.500 2 5 2M10 19V6a3 3 0 0 1 6 0M22 19V6a3 3 0 0 0-6 0M10 10h12M10 15h12"/></svg>
+          <span data-en="Private swimming pool">Ιδιωτική πισίνα</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="11" r="3"/><path d="M3 26c0-4.400 3.600-8 8-8s8 3.600 8 8M18 19.500c1.200-.900 2.500-1.500 4-1.500 3.900 0 7 3.100 7 7"/></svg>
+          <span data-en="Up to 6 guests">Έως 6 επισκέπτες</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 3 27h8l5-10 5 10h8z"/></svg>
+          <span data-en="Exclusive use of the whole site">Αποκλειστική χρήση όλου του χώρου</span>
+        </li>
+      </ul>
     </section>
 
-    <section class="section amenities" id="amenities">
-      <div class="wrap">
-        <p class="eyebrow" data-en="Our amenities">Παροχές</p>
-        <h2 data-en="Everything you need for a comfortable stay">Όλα όσα χρειάζεστε για μια άνετη διαμονή</h2>
-        <div class="cards">
-          <article class="card">
+    <section class="amenities" id="amenities">
+      <div class="wrap center-head">
+        <p class="kicker" data-en="Our amenities">Παροχές</p>
+        <h2 data-en="Your stay at Nomad">Η διαμονή σας στο Nomad</h2>
+        <p class="sub" data-en="Everything you need for a comfortable stay.">Όλα όσα χρειάζεστε για μια άνετη διαμονή.</p>
+      </div>
+      <div class="wrap rooms">
+        <article class="room">
+          <div class="room-img">
             <img src="assets/thumbs/nomad-08.jpg" width="720" height="480" loading="lazy" alt="Τα κρεβάτια της σκηνής" data-alt-en="Beds inside the tent">
-            <div class="card-body">
-              <h3 data-en="The tent">Η σκηνή</h3>
-              <ul>
-                <li data-en="Full air conditioning">Πλήρης κλιματισμός</li>
-                <li data-en="Comfortable beds">Άνετα κρεβάτια</li>
-                <li data-en="Free hi-speed internet throughout">Δωρεάν γρήγορο internet σε όλο τον χώρο</li>
-              </ul>
-            </div>
-          </article>
-          <article class="card">
+            <span class="room-no">01</span>
+            <h3 data-en="The tent">Η σκηνή</h3>
+          </div>
+          <ul>
+            <li data-en="Full air conditioning">Πλήρης κλιματισμός</li>
+            <li data-en="Comfortable beds">Άνετα κρεβάτια</li>
+            <li data-en="Free hi-speed internet throughout">Δωρεάν γρήγορο internet σε όλο τον χώρο</li>
+          </ul>
+        </article>
+        <article class="room">
+          <div class="room-img">
             <img src="assets/thumbs/nomad-10.jpg" width="720" height="480" loading="lazy" alt="Το μπάνιο" data-alt-en="The bathroom">
-            <div class="card-body">
-              <h3 data-en="Bathroom">Μπάνιο</h3>
-              <ul>
-                <li data-en="Separate toilet block for your exclusive use">Ξεχωριστός χώρος μπάνιου, αποκλειστικά για εσάς</li>
-                <li data-en="Toiletries and towels supplied">Είδη περιποίησης και πετσέτες</li>
-                <li data-en="Beach towels for the pool or the nearby beaches">Πετσέτες θαλάσσης για την πισίνα ή τις κοντινές παραλίες</li>
-              </ul>
-            </div>
-          </article>
-          <article class="card">
+            <span class="room-no">02</span>
+            <h3 data-en="Bathroom">Μπάνιο</h3>
+          </div>
+          <ul>
+            <li data-en="Separate toilet block for your exclusive use">Ξεχωριστός χώρος μπάνιου, αποκλειστικά για εσάς</li>
+            <li data-en="Toiletries and towels supplied">Είδη περιποίησης και πετσέτες</li>
+            <li data-en="Beach towels for the pool or the nearby beaches">Πετσέτες θαλάσσης για την πισίνα ή τις κοντινές παραλίες</li>
+          </ul>
+        </article>
+        <article class="room">
+          <div class="room-img">
             <img src="assets/thumbs/nomad-17.jpg" width="720" height="480" loading="lazy" alt="Ο πάγκος της υπαίθριας κουζίνας" data-alt-en="Outdoor kitchen counter">
-            <div class="card-body">
-              <h3 data-en="Outdoor kitchen">Υπαίθρια κουζίνα</h3>
-              <ul>
-                <li data-en="Refrigerator and freezer">Ψυγείο και καταψύκτης</li>
-                <li data-en="Countertop hobs and coffee makers">Επιτραπέζιες εστίες και καφετιέρες</li>
-                <li data-en="Electric barbeque">Ηλεκτρικό μπάρμπεκιου</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-        <p class="note" data-en="Luxuriate by our private pool or enjoy the nearby beaches of the “Attiki Riviera”.">Χαλαρώστε δίπλα στην ιδιωτική μας πισίνα ή απολαύστε τις κοντινές παραλίες της «Αττικής Ριβιέρας».</p>
+            <span class="room-no">03</span>
+            <h3 data-en="Outdoor kitchen">Υπαίθρια κουζίνα</h3>
+          </div>
+          <ul>
+            <li data-en="Refrigerator and freezer">Ψυγείο και καταψύκτης</li>
+            <li data-en="Countertop hobs and coffee makers">Επιτραπέζιες εστίες και καφετιέρες</li>
+            <li data-en="Electric barbeque">Ηλεκτρικό μπάρμπεκιου</li>
+          </ul>
+        </article>
+      </div>
+      <div class="wrap center-actions">
+        <a class="btn btn-line" href="#gallery" data-en="See the photos">Δείτε τις φωτογραφίες</a>
+        <a class="btn btn-solid" href="#contact" data-en="Book now">Κράτηση</a>
       </div>
     </section>
 
-    <section class="section gallery" id="gallery">
-      <div class="wrap">
-        <p class="eyebrow" data-en="Gallery">Φωτογραφίες</p>
+    <section class="band">
+      <img src="assets/photos/nomad-54.jpg" width="1200" height="900" loading="lazy" alt="Ο Σχοινιάς από ψηλά" data-alt-en="Schinias from above">
+      <div class="band-copy">
+        <p class="kicker" data-en="The Attiki Riviera">Αττική Ριβιέρα</p>
+        <h2 data-en="Luxuriate by our private pool or enjoy the nearby beaches">Χαλαρώστε δίπλα στην ιδιωτική μας πισίνα ή απολαύστε τις κοντινές παραλίες</h2>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="wrap center-head">
+        <p class="kicker" data-en="Gallery">Φωτογραφίες</p>
         <h2 data-en="A look around">Μια ματιά στον χώρο</h2>
       </div>
       <div class="grid" id="grid">
@@ -198,31 +231,35 @@
         <a href="assets/photos/nomad-69.jpg"><img src="assets/thumbs/nomad-69.jpg" width="720" height="480" loading="lazy" alt="Ο νιπτήρας στο μπάνιο" data-alt-en="The bathroom sink"></a>
         <a href="assets/photos/nomad-70.jpg"><img src="assets/thumbs/nomad-70.jpg" width="540" height="720" loading="lazy" alt="Η πόρτα του μπάνιου" data-alt-en="The bathroom door"></a>
       </div>
+      <div class="center-actions">
+        <button class="btn btn-line" id="moreBtn" type="button">Όλες οι φωτογραφίες</button>
+      </div>
     </section>
 
-    <section class="section contact" id="contact">
-      <div class="wrap contact-box">
-        <div>
-          <p class="eyebrow" data-en="Contact &amp; Booking">Επικοινωνία &amp; Κράτηση</p>
-          <h2 data-en="Book your escape today">Κλείστε την απόδρασή σας σήμερα</h2>
-          <p data-en="Our team is dedicated to providing you with an unforgettable glamping experience. Call us for further information, or check availability and book on Airbnb.">Η ομάδα μας είναι εδώ για να σας προσφέρει μια αξέχαστη εμπειρία glamping. Καλέστε μας για περισσότερες πληροφορίες ή δείτε διαθεσιμότητα και κάντε κράτηση στο Airbnb.</p>
-          <div class="hero-actions">
-            <a class="btn" href="https://www.airbnb.co.uk/rooms/936764506014377549" target="_blank" rel="noopener" data-en="Availability &amp; booking on Airbnb">Διαθεσιμότητα &amp; κράτηση στο Airbnb</a>
-            <a class="btn btn-wa" data-wa href="https://wa.me/306974046224" target="_blank" rel="noopener" data-en="Message us on WhatsApp">Στείλτε μήνυμα στο WhatsApp</a>
-            <a class="btn btn-ghost" href="tel:+306974046224" data-en="Call us">Καλέστε μας</a>
-          </div>
-        </div>
+    <section class="contact" id="contact">
+      <div class="wrap center-head">
+        <p class="kicker" data-en="Contact &amp; Booking">Επικοινωνία &amp; Κράτηση</p>
+        <h2 data-en="Book your escape today">Κλείστε την απόδρασή σας σήμερα</h2>
+        <p class="sub" data-en="Our team is dedicated to providing you with an unforgettable glamping experience.">Η ομάδα μας είναι εδώ για να σας προσφέρει μια αξέχαστη εμπειρία glamping.</p>
+      </div>
+      <div class="wrap contact-grid">
         <dl class="details">
           <div><dt data-en="Phone">Τηλέφωνο</dt><dd><a href="tel:+306974046224">+30 697 404 6224</a></dd></div>
           <div><dt>WhatsApp</dt><dd><a data-wa href="https://wa.me/306974046224" target="_blank" rel="noopener" data-en="Send a message">Στείλτε μήνυμα</a></dd></div>
-          <div><dt data-en="Address">Διεύθυνση</dt><dd><span data-en="Anexartisias 98, Schinias 190 07, Greece">Ανεξαρτησίας 98, Σχοινιάς 190&nbsp;07</span><br><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=%CE%91%CE%BD%CE%B5%CE%BE%CE%B1%CF%81%CF%84%CE%B7%CF%83%CE%AF%CE%B1%CF%82%2098%2C%20%CE%A3%CF%87%CE%BF%CE%B9%CE%BD%CE%B9%CE%AC%CF%82%20190%2007" target="_blank" rel="noopener" data-en="Directions on the map →">Οδηγίες στον χάρτη →</a></dd></div>
+          <div><dt data-en="Address">Διεύθυνση</dt><dd data-en="Anexartisias 98, Schinias 190 07, Greece">Ανεξαρτησίας 98, Σχοινιάς 190&nbsp;07</dd></div>
           <div><dt data-en="Booking">Κράτηση</dt><dd><a href="https://www.airbnb.co.uk/rooms/936764506014377549" target="_blank" rel="noopener">Airbnb</a></dd></div>
         </dl>
+        <div class="contact-actions">
+          <a class="btn btn-solid" href="https://www.airbnb.co.uk/rooms/936764506014377549" target="_blank" rel="noopener" data-en="Availability &amp; booking on Airbnb">Διαθεσιμότητα &amp; κράτηση στο Airbnb</a>
+          <a class="btn btn-line btn-wa" data-wa href="https://wa.me/306974046224" target="_blank" rel="noopener" data-en="Message us on WhatsApp">Μήνυμα στο WhatsApp</a>
+          <a class="btn btn-line" href="tel:+306974046224" data-en="Call us">Καλέστε μας</a>
+        </div>
       </div>
-      <div class="wrap map-block">
-        <div class="map-head">
+
+      <div class="wrap location" id="location">
+        <div class="location-head">
           <h3 data-en="How to find us">Πού θα μας βρείτε</h3>
-          <p data-en="Anexartisias 98, Schinias 190 07, Greece">Ανεξαρτησίας 98, Σχοινιάς 190&nbsp;07</p>
+          <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=%CE%91%CE%BD%CE%B5%CE%BE%CE%B1%CF%81%CF%84%CE%B7%CF%83%CE%AF%CE%B1%CF%82%2098%2C%20%CE%A3%CF%87%CE%BF%CE%B9%CE%BD%CE%B9%CE%AC%CF%82%20190%2007" target="_blank" rel="noopener" data-en="Directions on the map →">Οδηγίες στον χάρτη →</a>
         </div>
         <div class="map-frame">
           <iframe src="https://www.google.com/maps?q=%CE%91%CE%BD%CE%B5%CE%BE%CE%B1%CF%81%CF%84%CE%B7%CF%83%CE%AF%CE%B1%CF%82%2098%2C%20%CE%A3%CF%87%CE%BF%CE%B9%CE%BD%CE%B9%CE%AC%CF%82%20190%2007&amp;hl=el&amp;z=15&amp;output=embed" title="Χάρτης: Nomad Glamping, Ανεξαρτησίας 98, Σχοινιάς" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
@@ -232,10 +269,10 @@
   </main>
 
   <footer class="footer">
-    <div class="wrap">
-      <span>© <span id="year"></span> Nomad Glamping</span>
-      <a href="#top" data-en="Back to top ↑">Πίσω στην αρχή ↑</a>
-    </div>
+    <a class="wordmark" href="#top">Nomad Glamping</a>
+    <p data-en="Anexartisias 98, Schinias 190 07, Greece">Ανεξαρτησίας 98, Σχοινιάς 190&nbsp;07</p>
+    <p><a href="tel:+306974046224">+30 697 404 6224</a></p>
+    <p class="copy">© <span id="year"></span> Nomad Glamping</p>
   </footer>
 
   <dialog class="lightbox" id="lightbox" aria-label="Φωτογραφία">
