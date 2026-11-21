@@ -152,7 +152,8 @@ if ("IntersectionObserver" in window) {
   const key = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const first = new Date(today.getFullYear(), today.getMonth(), 1);
-  const MAX_AHEAD = 11;
+  let maxAhead = 11;
+  let limit = null; // first date Airbnb no longer covers; from here on everything shows as closed
   let offset = 0;
   let booked = null;
 
@@ -166,7 +167,7 @@ if ("IntersectionObserver" in window) {
     for (let d = 1; d <= days; d++) {
       const date = new Date(y, m, d);
       const k = key(date);
-      const cls = date < today ? "past" : booked.has(k) ? "booked" : "free";
+      const cls = date < today ? "past" : (booked.has(k) || (limit && date >= limit)) ? "booked" : "free";
       const label = cls === "booked" ? (lang === "el" ? "κλεισμένο" : "booked") : cls === "free" ? (lang === "el" ? "διαθέσιμο" : "available") : "";
       html += `<span class="d ${cls}${k === key(today) ? " today" : ""}"${label ? ` aria-label="${d} ${MONTHS[lang][m]}: ${label}"` : ""}>${d}</span>`;
     }
@@ -179,7 +180,7 @@ if ("IntersectionObserver" in window) {
     const b = new Date(a.getFullYear(), a.getMonth() + 1, 1);
     monthsEl.innerHTML = month(a.getFullYear(), a.getMonth()) + month(b.getFullYear(), b.getMonth());
     prev.disabled = offset <= 0;
-    next.disabled = offset >= MAX_AHEAD;
+    next.disabled = offset >= maxAhead;
     prev.setAttribute("aria-label", lang === "el" ? "Προηγούμενος μήνας" : "Previous month");
     next.setAttribute("aria-label", lang === "el" ? "Επόμενος μήνας" : "Next month");
   }
@@ -187,7 +188,7 @@ if ("IntersectionObserver" in window) {
   function showEmpty() { cal.classList.add("is-empty"); empty.hidden = false; }
 
   prev.addEventListener("click", () => { if (offset > 0) { offset--; render(); } });
-  next.addEventListener("click", () => { if (offset < MAX_AHEAD) { offset++; render(); } });
+  next.addEventListener("click", () => { if (offset < maxAhead) { offset++; render(); } });
   document.addEventListener("langchange", render);
 
   const remote = "https://raw.githubusercontent.com/manina1-dev/Nomad-Glamping/gh-pages/assets/availability.json";
@@ -200,6 +201,15 @@ if ("IntersectionObserver" in window) {
       const [ye, me, de] = e.split("-").map(Number);
       for (let d = new Date(ys, ms - 1, ds), end = new Date(ye, me - 1, de); d < end; d.setDate(d.getDate() + 1)) booked.add(key(d));
     });
+    // Show only as far ahead as the Airbnb calendar goes: days after its last date count as closed.
+    let last = null;
+    data.unavailable.forEach(([, e]) => { const [y, m, d] = e.split("-").map(Number); const end = new Date(y, m - 1, d); if (!last || end > last) last = end; });
+    if (last && last > today) {
+      limit = last;
+      const lastOpen = new Date(last.getFullYear(), last.getMonth(), last.getDate() - 1);
+      const months = (lastOpen.getFullYear() - first.getFullYear()) * 12 + lastOpen.getMonth() - first.getMonth();
+      maxAhead = Math.max(0, Math.min(11, months - 1));
+    }
     render();
   }).catch(showEmpty);
 })();
