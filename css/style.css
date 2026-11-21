@@ -124,7 +124,10 @@ button { font: inherit; }
 .duo-side { padding-bottom: clamp(0px, 3vw, 40px); }
 .duo-side p { max-width: 34ch; margin-bottom: 36px; }
 .duo-side img { width: min(100%, 340px); aspect-ratio: 2 / 3; object-fit: cover; }
-.specs { list-style: none; padding: 0; margin-top: clamp(56px, 8vw, 100px); display: flex; justify-content: center; flex-wrap: wrap; gap: 18px 56px; }
+.only { text-align: center; margin-top: clamp(64px, 9vw, 120px); }
+.only-line { font-family: var(--display); font-weight: 300; font-style: italic; font-size: clamp(1.900rem, 4vw, 3.100rem); line-height: 1.2; color: var(--ink); margin: 0 0 16px; }
+.only-sub { max-width: 46ch; margin: 0 auto; font-size: 1.050rem; }
+.specs { list-style: none; padding: 0; margin-top: clamp(44px, 6vw, 72px); display: flex; justify-content: center; flex-wrap: wrap; gap: 18px 56px; }
 .specs li { display: flex; align-items: center; gap: 14px; font-size: .900rem; color: var(--ink); }
 .specs svg { width: 30px; height: 30px; fill: none; stroke: var(--accent); stroke-width: 1.200; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 

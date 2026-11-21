@@ -127,7 +127,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ---------- Reveal on scroll ---------- */
-const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .info-grid, .cal, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
+const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .only, .specs, .center-head, .room, .band-copy, .info-grid, .cal, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
