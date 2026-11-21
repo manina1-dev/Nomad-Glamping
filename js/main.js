@@ -44,6 +44,7 @@ function setLang(next) {
     if (src !== map.getAttribute("src")) map.setAttribute("src", src);
   }
   if (moreBtn) moreBtn.textContent = moreLabel();
+  document.dispatchEvent(new CustomEvent("langchange"));
   try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
 }
 langButtons.forEach((b) => b.addEventListener("click", () => setLang(lang === "el" ? "en" : "el")));
@@ -126,12 +127,81 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ---------- Reveal on scroll ---------- */
-const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .info-grid, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
+const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .specs, .center-head, .room, .band-copy, .info-grid, .cal, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
   revealEls.forEach((el) => { el.classList.add("reveal"); io.observe(el); });
 }
+
+/* ---------- Availability calendar (dates only, synced from Airbnb) ---------- */
+(function () {
+  const cal = document.getElementById("cal");
+  if (!cal) return;
+  const monthsEl = document.getElementById("calMonths");
+  const prev = document.getElementById("calPrev");
+  const next = document.getElementById("calNext");
+  const empty = document.getElementById("calEmpty");
+  const WD = { el: ["Δε", "Τρ", "Τε", "Πε", "Πα", "Σα", "Κυ"], en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"] };
+  const MONTHS = {
+    el: ["Ιανουάριος", "Φεβρουάριος", "Μάρτιος", "Απρίλιος", "Μάιος", "Ιούνιος", "Ιούλιος", "Αύγουστος", "Σεπτέμβριος", "Οκτώβριος", "Νοέμβριος", "Δεκέμβριος"],
+    en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  };
+  const pad = (n) => String(n).padStart(2, "0");
+  const key = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const first = new Date(today.getFullYear(), today.getMonth(), 1);
+  const MAX_AHEAD = 11;
+  let offset = 0;
+  let booked = null;
+
+  function month(y, m) {
+    const start = new Date(y, m, 1);
+    const lead = (start.getDay() + 6) % 7;
+    const days = new Date(y, m + 1, 0).getDate();
+    let html = `<div class="cal-month"><h3>${MONTHS[lang][m]} ${y}</h3><div class="cal-grid">`;
+    html += WD[lang].map((w) => `<span class="wd">${w}</span>`).join("");
+    for (let i = 0; i < lead; i++) html += "<span></span>";
+    for (let d = 1; d <= days; d++) {
+      const date = new Date(y, m, d);
+      const k = key(date);
+      const cls = date < today ? "past" : booked.has(k) ? "booked" : "free";
+      const label = cls === "booked" ? (lang === "el" ? "κλεισμένο" : "booked") : cls === "free" ? (lang === "el" ? "διαθέσιμο" : "available") : "";
+      html += `<span class="d ${cls}${k === key(today) ? " today" : ""}"${label ? ` aria-label="${d} ${MONTHS[lang][m]}: ${label}"` : ""}>${d}</span>`;
+    }
+    return html + "</div></div>";
+  }
+
+  function render() {
+    if (!booked) return;
+    const a = new Date(first.getFullYear(), first.getMonth() + offset, 1);
+    const b = new Date(a.getFullYear(), a.getMonth() + 1, 1);
+    monthsEl.innerHTML = month(a.getFullYear(), a.getMonth()) + month(b.getFullYear(), b.getMonth());
+    prev.disabled = offset <= 0;
+    next.disabled = offset >= MAX_AHEAD;
+    prev.setAttribute("aria-label", lang === "el" ? "Προηγούμενος μήνας" : "Previous month");
+    next.setAttribute("aria-label", lang === "el" ? "Επόμενος μήνας" : "Next month");
+  }
+
+  function showEmpty() { cal.classList.add("is-empty"); empty.hidden = false; }
+
+  prev.addEventListener("click", () => { if (offset > 0) { offset--; render(); } });
+  next.addEventListener("click", () => { if (offset < MAX_AHEAD) { offset++; render(); } });
+  document.addEventListener("langchange", render);
+
+  const remote = "https://raw.githubusercontent.com/manina1-dev/Nomad-Glamping/gh-pages/assets/availability.json";
+  const load = (url) => fetch(url + "?t=" + Date.now(), { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  load(remote).catch(() => load("assets/availability.json")).then((data) => {
+    if (!data || !Array.isArray(data.unavailable)) return showEmpty();
+    booked = new Set();
+    data.unavailable.forEach(([s, e]) => {
+      const [ys, ms, ds] = s.split("-").map(Number);
+      const [ye, me, de] = e.split("-").map(Number);
+      for (let d = new Date(ys, ms - 1, ds), end = new Date(ye, me - 1, de); d < end; d.setDate(d.getDate() + 1)) booked.add(key(d));
+    });
+    render();
+  }).catch(showEmpty);
+})();
 
 document.getElementById("year").textContent = new Date().getFullYear();

@@ -47,6 +47,7 @@
       <a href="#gallery" data-en="Gallery">Φωτογραφίες</a>
       <a href="#location" data-en="Location">Τοποθεσία</a>
       <a href="around.html" data-en="Around Nomad">Γύρω από το Nomad</a>
+      <a href="#availability" data-en="Availability">Διαθεσιμότητα</a>
       <a href="#info" data-en="Good to know">Καλό να ξέρετε</a>
       <a href="#contact" data-en="Contact &amp; Booking">Επικοινωνία &amp; Κράτηση</a>
       <a href="#gift" data-en="Gift card">Δωροκάρτα</a>
@@ -299,6 +300,30 @@
             <p data-en="Plenty of space to park on the street right outside. It's a quiet road with almost no traffic.">Άνετος χώρος για στάθμευση στον δρόμο, ακριβώς έξω από το κατάλυμα. Είναι ήσυχος δρόμος, με σχεδόν καθόλου κίνηση.</p>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <section class="avail" id="availability">
+      <div class="wrap center-head">
+        <p class="kicker" data-en="Availability">Διαθεσιμότητα</p>
+        <h2 data-en="Check your dates">Δείτε τις ημερομηνίες σας</h2>
+        <p class="sub" data-en="Updated automatically from our Airbnb calendar.">Ενημερώνεται αυτόματα από το ημερολόγιό μας στο Airbnb.</p>
+      </div>
+      <div class="wrap cal" id="cal" aria-live="polite">
+        <div class="cal-nav">
+          <button class="cal-btn" id="calPrev" type="button" aria-label="Προηγούμενος μήνας">‹</button>
+          <button class="cal-btn" id="calNext" type="button" aria-label="Επόμενος μήνας">›</button>
+        </div>
+        <div class="cal-months" id="calMonths"></div>
+        <div class="cal-legend">
+          <span><i class="dot dot-free"></i><span data-en="Available">Διαθέσιμο</span></span>
+          <span><i class="dot dot-booked"></i><span data-en="Booked">Κλεισμένο</span></span>
+        </div>
+        <p class="cal-empty" id="calEmpty" hidden data-en="The calendar will appear here shortly. Until then, check availability on Airbnb or send us a message.">Το ημερολόγιο θα εμφανιστεί εδώ σύντομα. Μέχρι τότε, δείτε τη διαθεσιμότητα στο Airbnb ή στείλτε μας μήνυμα.</p>
+      </div>
+      <div class="wrap center-actions">
+        <a class="btn btn-solid" href="https://www.airbnb.co.uk/rooms/936764506014377549" target="_blank" rel="noopener" data-en="Book on Airbnb">Κράτηση στο Airbnb</a>
+        <a class="btn btn-line btn-wa" data-wa href="https://wa.me/306974046224" target="_blank" rel="noopener" data-en="Ask on WhatsApp">Ρωτήστε στο WhatsApp</a>
       </div>
     </section>
 

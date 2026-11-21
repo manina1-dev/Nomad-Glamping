@@ -1,0 +1,65 @@
+name: Sync Airbnb calendar
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: airbnb-calendar
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check that the calendar link is set
+        id: check
+        env:
+          ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
+        run: |
+          if [ -z "$ICAL_URL" ]; then
+            echo "The AIRBNB_ICAL_URL secret is not set yet, so there is nothing to sync."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out the published site
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: site
+
+      - name: Check out the sync script
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          path: tools
+          sparse-checkout: scripts
+
+      - name: Download the Airbnb calendar
+        if: steps.check.outputs.skip != 'true'
+        env:
+          ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
+        run: curl -fsSL --retry 3 --max-time 60 "$ICAL_URL" -o "$RUNNER_TEMP/airbnb.ics"
+
+      - name: Keep only the unavailable dates
+        if: steps.check.outputs.skip != 'true'
+        run: python3 tools/scripts/ics_to_json.py "$RUNNER_TEMP/airbnb.ics" site/assets/availability.json
+
+      - name: Publish if the dates changed
+        if: steps.check.outputs.skip != 'true'
+        working-directory: site
+        run: |
+          git add assets/availability.json
+          if git diff --cached --quiet; then
+            echo "No changes in availability."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update availability from Airbnb"
+          git push
