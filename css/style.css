@@ -286,6 +286,7 @@ button { font: inherit; }
 .footer .wordmark { display: inline-block; font-size: 1.100rem; margin-bottom: 18px; }
 .footer p { margin: 0 0 4px; }
 .footer a { text-decoration: none; }
+.footer .reg { margin-top: 14px; font-size: .750rem; letter-spacing: .06em; }
 .footer .copy { margin-top: 22px; font-size: .750rem; letter-spacing: .08em; }
 
 /* Reveal on scroll */
