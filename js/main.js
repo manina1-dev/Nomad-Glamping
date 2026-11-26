@@ -9,6 +9,7 @@ const langButtons = [...document.querySelectorAll(".lang")];
 const moreBtn = document.getElementById("moreBtn");
 const grid = document.getElementById("grid");
 const shots = grid ? [...grid.querySelectorAll("a")] : [];
+const extraShots = [...document.querySelectorAll(".hut-shot")];
 
 function moreLabel() {
   if (grid.classList.contains("open")) return lang === "el" ? "Λιγότερες φωτογραφίες" : "Show fewer photos";
@@ -103,6 +104,13 @@ shots.forEach((a, i) => a.addEventListener("click", (e) => {
   show(i);
   box.showModal();
 }));
+extraShots.forEach((a) => a.addEventListener("click", (e) => {
+  const i = shots.findIndex((s) => s.getAttribute("href") === a.getAttribute("href"));
+  if (i < 0 || !box) return;
+  e.preventDefault();
+  show(i);
+  box.showModal();
+}));
 document.getElementById("lbPrev")?.addEventListener("click", () => show(current - 1));
 document.getElementById("lbNext")?.addEventListener("click", () => show(current + 1));
 document.getElementById("lbClose")?.addEventListener("click", () => box.close());
@@ -127,7 +135,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ---------- Reveal on scroll ---------- */
-const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .only, .specs, .center-head, .room, .band-copy, .info-grid, .cal, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
+const revealEls = document.querySelectorAll(".intro-head > *, .duo-main, .duo-side, .only, .specs, .center-head, .room, .hut-copy, .hut-photos, .band-copy, .info-grid, .cal, .gift-grid, .contact-grid, .location, .area-head, .place, .area-cta");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
